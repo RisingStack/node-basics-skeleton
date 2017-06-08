@@ -11,9 +11,14 @@ const SharedMethods = {}
  */
 SharedMethods.getSumOfCart = async function (username) {
   const user = await User.findOne({ username: username })
-  const productNamesInCart = user.cart.map(function (item) {
-    return item.productName
-  })
+  let productNamesInCart
+  if (user && user.cart) {
+    productNamesInCart = user.cart.map(function (item) {
+      return item.productName
+    })
+  } else {
+    return 0
+  }
 
   const products = await Product.getById(productNamesInCart)
 
