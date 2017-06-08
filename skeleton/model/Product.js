@@ -15,23 +15,11 @@ const Product = mongoose.model(MODEL_NAME, productSchema)
 
 /**
  *
- * @param {string[]} productNames
- * @returns {Query|Promise}
+ * @param {number} id
+ * @returns {Query|Promise.<Product[]>}
  */
-Product.getManyByNames = function (productNames) {
-  return Product.find({
-    name: {
-      $in: productNames
-    }
-  })
-}
-
-/**
- *
- * @returns {Query|Promise}
- */
-Product.getAll = function () {
-  return Product.find()
+Product.getById = function (id) {
+  return Product.findOne({ _id: id }, { __v: false })
 }
 
 module.exports = Product

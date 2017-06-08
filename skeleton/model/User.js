@@ -13,7 +13,7 @@ const User = mongoose.model(MODEL_NAME, userSchema)
 
 /**
  * Get all users from db
- * @returns {Query|Promise.<User>}
+ * @returns {Query|Promise.<User[]>}
  */
 User.getUsers = function () {
   return User.find()
