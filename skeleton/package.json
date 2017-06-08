@@ -1,5 +1,5 @@
 {
-  "name": "oander-skeleton",
+  "name": "skeleton",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,6 @@
     "joi": "^10.5.2",
     "lodash": "^4.17.4",
     "mongoose": "^4.10.5",
-    "request": "^2.81.0",
     "request-promise-native": "^1.0.4"
   }
 }

@@ -1,6 +1,5 @@
 'use strict'
-const config = require('../config').mongo
 const mongoose = require('mongoose')
 
-mongoose.connect(config.uri)
+mongoose.connect('mongodb://localhost:27017/basics-skeleton')
 mongoose.Promise = global.Promise

@@ -1,63 +1,30 @@
 'use strict'
+require('../connection/mongo')
 const mongoose = require('mongoose')
-const connection = require('../connection/mongo')
-const Schema = mongoose.Schema
 
-const MODEL_NAME = 'User'
+const Schema = mongoose.Schema
+const MODEL_NAME = 'user'
 
 const userSchema = new Schema({
-  username: { type: String, required: true, unique: true },
-  cart: [
-    {
-      productName: String,
-      count: Number
-    }
-  ]
+  username: { type: String, required: true, unique: true }
 })
 
 const User = mongoose.model(MODEL_NAME, userSchema)
 
 /**
- *
- * @param {string} username
- * @returns {Query|Promise}
+ * Get all users from db
+ * @returns {Query|Promise.<User>}
  */
-User.getByUsername = function (username) {
-  return User.findOne({ username: username })
+User.getUsers = function () {
+  return User.find()
 }
 
 /**
  *
- * @param {string} username
- * @param {string} productName
- * @param {number} count
+ * @param {User} newUser
  * @returns {Query|Promise}
  */
-User.addProductToCart = function (username, productName, count) {
-  return User.update({ username: username }, {
-    $addToSet: {
-      cart: {
-        productName: productName,
-        count: count
-      }
-    }
-  })
+User.register = function (newUser) {
+  return new User(newUser).save()
 }
-
-/**
- *
- * @param {string} username
- * @param {string} productName
- * @param {number} count
- * @returns {Promise}
- */
-
-User.changeCountOfProductInCart = function (username, productName, count) {
-  return User.update({ username: username, 'cart.productName': productName }, {
-    $set: {
-      'cart.$.count': count
-    }
-  })
-}
-
 module.exports = User

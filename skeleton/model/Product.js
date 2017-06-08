@@ -6,6 +6,7 @@ const Schema = mongoose.Schema
 const MODEL_NAME = 'Product'
 
 const productSchema = new Schema({
+  _id: Number,
   name: String,
   price: Number
 })

@@ -2,15 +2,14 @@
 const joi = require('joi')
 
 const schema = joi.object({
-  PORT: joi.number().default(3000),
+  PORT: joi.number().default(3000)
 }).unknown().required()
 
-const { error, value: envVars } = joi.validate(process.env, schema)
-
+const { error, value } = joi.validate(process.env, schema)
 if (error) {
-  throw new Error(`Config validation error: ${error.message}`)
+  throw new Error('Config validation error:', error.message)
 }
 
 module.exports = {
-  port: envVars.PORT,
+  port: value.PORT
 }

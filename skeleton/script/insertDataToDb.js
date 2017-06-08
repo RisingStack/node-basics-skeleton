@@ -2,7 +2,7 @@
 var conn = new Mongo()
 var db = conn.getDB("basics-skeleton")
 var Products = db.getCollection('products')
-var User = db.getCollection('user')
+var Users = db.getCollection('users')
 
 Products.insertMany([
   {
@@ -42,7 +42,7 @@ Products.insertMany([
     price: 8
   }
 ])
-User.insertMany([
+Users.insertMany([
   { username: 'john' },
   { username: 'mary' },
   { username: 'cho' }
