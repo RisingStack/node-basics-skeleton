@@ -10,6 +10,7 @@ app.use(bodyParser.json())
 
 app.get('/', routes.root.get)
 app.get('/products', routes.products.get)
+app.get('/products/:product/comments', routes.products.comments.get) // fake product! -> postId
 app.get('/user/:username/cart', routes.user.cart.get)
 app.put('/user/:username/cart', routes.user.cart.put)
 app.put('/user/:username/cart/:productName/count/:count', routes.user.cart.count.put)
