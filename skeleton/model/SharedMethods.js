@@ -20,7 +20,7 @@ SharedMethods.getSumOfCart = async function (username) {
     return 0
   }
 
-  const products = await Product.getById(productNamesInCart)
+  const products = await Product.getManyByNames(productNamesInCart)
 
   return SharedMethods._getTotalCost(products, user.cart)
 }
