@@ -7,6 +7,14 @@ const Users = require('../model/User')
 const Product = require('../model/Product')
 const Comments = require('../model/Comments')
 
+function stepIntoMe () {
+  const a = 1+ 2
+  console.log(a)
+  return a
+}
+
+stepIntoMe()
+
 const app = express()
 
 app.use(bodyParser.json())
