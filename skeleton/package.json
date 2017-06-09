@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-unit": "NODE_ENV=test mocha server/**/*unit.spec.js",
+    "test-e2e": "NODE_ENV=test mocha server/**/*e2e.spec.js",
+    "test-unit-watch": "NODE_ENV=test mocha --watch server/**/*unit.spec.js",
+    "test": "npm run test-unit && npm run test-e2e"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +19,12 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.10.5",
     "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "nock": "^9.0.13",
+    "sinon": "^2.3.2",
+    "super-request": "^1.2.0"
   }
 }

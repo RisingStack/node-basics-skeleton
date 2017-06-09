@@ -56,3 +56,5 @@ app.listen(config.port, function (err) {
   }
   console.log('Sample app is listening at', config.port)
 })
+
+module.exports = app
